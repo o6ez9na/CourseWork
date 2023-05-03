@@ -7,9 +7,9 @@
 using namespace sf;
 
 Player::Player() :curFrame(0) {
-    texture.loadFromFile(IDLE);
+    texture.loadFromFile(RUN);
     sprite.setTexture(texture);
-    sprite.setTextureRect(sf::IntRect(0, 1, 30, 30));
+    sprite.setTextureRect(sf::IntRect(0, 0, 32, 31));
     sprite.setScale(3,3);
 }
 
@@ -20,11 +20,16 @@ int Player::getHealth() {
 }
 
 void Player::isRight(float dtTime) {
-    sprite.setPosition(dx * dtTime, 0);
-}
+    sprite.move(dx * dtTime, 0);
+    curFrame += 0.1025;
+    if (curFrame > 6) curFrame -= 6;
+    sprite.setTextureRect(sf::IntRect(32 * int(curFrame), 0, 32, 31));}
 
 void Player::isLeft(float dtTime) {
-    sprite.setPosition(-dx * dtTime, 0);
+    sprite.move(-dx * dtTime, 0);
+    curFrame += 0.1025;
+    if (curFrame > 6) curFrame -= 6;
+    sprite.setTextureRect(sf::IntRect(32 * int(curFrame) + 32, 0, -32, 31));
 }
 
 void Player::isUp(float dtTime) {

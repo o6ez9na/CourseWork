@@ -13,12 +13,10 @@ private:
     sf::Texture texture;
     sf::Sprite sprite;
 
-    const float dx = 1;
+    const float dx = 125;
     const float dy = 0.5;
 
     float curFrame;
-    bool onGround = true;
-    int moveSpeed = 1;
 public:
     Player();
     ~Player();

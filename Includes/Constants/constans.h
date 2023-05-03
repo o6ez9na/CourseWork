@@ -12,6 +12,7 @@
 #define TITLE "Test GAME"
 
 #define IDLE "Sprites/Entity/idle.png"
+#define RUN "Sprites/Entity/run.png"
 #define BACKGROUND_LAYER_ONE "Sprites/BackgroundLayers/layer_one.png"
 
 #endif //COURSEWORK_CONSTANS_H
