@@ -32,12 +32,16 @@ void Game::initWindow() {
 //constructor and destructor
 Game::~Game() {
     delete this->window;
+    while (!this->states.empty())
+    {
+        delete this->states.top();
+        this->states.pop();
+    }
 }
 
 Game::Game() {
-    player = new Player();
     this->initWindow();
-    player->getSprite().setPosition(50,450);
+    this->initStates();
 }
 
 //Functions
@@ -46,19 +50,34 @@ void Game::updateEvents() {
             if (this->event.type == sf::Event::Closed)
                 this->window->close();
 
-        if(event.type == sf::Event::KeyPressed)
-            stateManager.run(player,event.key.code, dt);
+        /*if(event.type == sf::Event::KeyPressed)
+            stateManager.run(player,event.key.code, dt);*/
 }
 
 void Game::update() {
     this->updateEvents();
+    if(!this->states.empty())
+    {
+        this->states.top()->update(this->dt);
+        if (this->states.top()->getQuit()){
+            this->states.top()->endState();
+            delete this->states.top();
+            this->states.pop();
+        }
+    }
+    else
+    {
+        this->endApplication();
+        this->window->close();
+    }
 }
 
 void Game::render() {
     this->window->clear();
-    this->window->draw(sprite);
-    player->render(window);
-
+    /*this->window->draw(sprite);
+    player->render(window);*/
+    if(!this->states.empty())
+        this->states.top()->render();
     this->window->display();
 }
 
@@ -73,6 +92,14 @@ void Game::run() {
 
 void Game::updateDt() {
     this->dt = this->dtClock.restart().asSeconds();
+}
+
+void Game::initStates() {
+    this->states.push(new GameState(this->window));
+}
+
+void Game::endApplication() {
+    std::cout << "Close APP\n";
 }
 
 

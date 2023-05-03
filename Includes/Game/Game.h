@@ -6,38 +6,40 @@
 #define COURSEWORK_GAME_H
 
 
-#include <iostream>
 #include <fstream>
 
 #include "../Constants/constans.h"
-#include "../Player/Player.h"
-#include "../StateManager/StateManager.h"
+#include "../GameState/GameState.h"
 
 class Game {
 public:
     Game();
     ~Game();
 
-    //Functions
+    void endApplication();
+    //update
     void updateEvents();
     void update();
-    void render();
-    void run();
     void updateDt();
 
-    Player* player;
+    //core
+    void run();
+
+    //render
+    void render();
 private:
+    void initWindow();
+    void initStates();
     //Variables
     sf::Texture texture;
     sf::Sprite sprite;
-    StateManager stateManager;
     float dt;
     sf::Clock dtClock;
-
+    std::stack<State *> states;
     sf::RenderWindow *window;
     sf::Event event;
 
-    void initWindow();
+
 };
 
 

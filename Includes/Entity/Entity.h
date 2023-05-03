@@ -6,11 +6,19 @@
 #define COURSEWORK_ENTITY_H
 
 
-
+#include "../Constants/constans.h"
 class Entity {
-protected:
-    int health = 0;
+public:
+    Entity();
+    virtual ~Entity();
 
+    virtual void update(const float& dt);
+    virtual void render(sf::RenderTarget* target);
+    virtual void move(const float& dt, const float dirX, const float dirY);
+private:
+protected:
+    sf::RectangleShape shape;
+    float movementSpeed;
 };
 
 

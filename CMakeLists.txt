@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc")
 
 
-add_executable(CourseWork main.cpp Includes/Game/Game.cpp Includes/Game/Game.h Includes/Constants/constans.h Includes/Player/Player.cpp Includes/Player/Player.h Includes/Entity/Entity.cpp Includes/Entity/Entity.h Includes/StateManager/StateManager.cpp Includes/StateManager/StateManager.h)
+add_executable(CourseWork main.cpp Includes/Game/Game.cpp Includes/Game/Game.h Includes/Constants/constans.h Includes/Player/Player.cpp Includes/Player/Player.h Includes/Entity/Entity.cpp Includes/Entity/Entity.h Includes/State/State.cpp Includes/State/State.h Includes/GameState/GameState.cpp Includes/GameState/GameState.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 

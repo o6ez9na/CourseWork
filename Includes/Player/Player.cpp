@@ -15,16 +15,13 @@ Player::Player() :curFrame(0) {
 
 Player::~Player() = default;
 
-int Player::getHealth() {
-    return this->health;
-}
-
 void Player::isRight(float dtTime) {
     sprite.move(dx * dtTime, 0);
     curFrame += 0.1025;
-
-    if (curFrame > 6) curFrame -= 6;
-    sprite.setTextureRect(sf::IntRect(32 * int(curFrame), 0, 32, 31));}
+    if (curFrame > 6)
+        curFrame -= 6;
+    sprite.setTextureRect(sf::IntRect(32 * int(curFrame), 0, 32, 31));
+}
 
 void Player::isLeft(float dtTime) {
     sprite.move(-dx * dtTime, 0);

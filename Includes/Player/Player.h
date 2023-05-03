@@ -6,15 +6,15 @@
 #define COURSEWORK_PLAYER_H
 
 #include "../Constants/constans.h"
-#include "../Entity/Entity.h"
 
-class Player : public Entity {
+class Player {
 private:
     sf::Texture texture;
     sf::Sprite sprite;
-
-    const float dx = 125;
-    const float dy = 0.5;
+    sf::FloatRect rect;
+    bool onGround = true;
+    float dx = 125;
+    float dy = 0.5;
 
     float curFrame;
 public:
@@ -23,7 +23,6 @@ public:
 
     sf::Sprite &getSprite();
 
-    int getHealth();
 
     void isRight(float dtTime);
     void isLeft(float dtTime);
