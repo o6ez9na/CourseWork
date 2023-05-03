@@ -22,6 +22,7 @@ int Player::getHealth() {
 void Player::isRight(float dtTime) {
     sprite.move(dx * dtTime, 0);
     curFrame += 0.1025;
+
     if (curFrame > 6) curFrame -= 6;
     sprite.setTextureRect(sf::IntRect(32 * int(curFrame), 0, 32, 31));}
 
